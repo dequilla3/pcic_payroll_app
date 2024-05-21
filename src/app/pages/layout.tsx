@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import Sidebar from "../components/sections/Sidebar";
+import { VENDOR_ABBREVIATION } from "../constants/Apptext";
 
 export const metadata: Metadata = {
-  title: "PCIC ESS",
+  title: `${VENDOR_ABBREVIATION} | PMS-ESS`,
   description: "Simplify Your Workday",
 };
 

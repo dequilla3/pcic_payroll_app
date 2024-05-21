@@ -1,31 +1,49 @@
 "use client";
 
-import SideBarList from "../custom-components/SidebarList";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import InfoIcon from "@mui/icons-material/Info";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
-import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+import SideBarList from "../custom-components/SidebarList"; 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { VENDOR_ABBREVIATION, VERSION } from "@/app/constants/Apptext";
+import { ROUTES } from "@/app/constants/Routes";
 
 export default function Sidebar() {
-  const [routes, setRoutes] = useState([
-    { title: "Dashboard", icon: DashboardIcon, isClicked: true },
-    { title: "About Me", icon: InfoIcon, isClicked: false },
-    { title: "Filings", icon: PendingActionsIcon, isClicked: false },
-    { title: "My Payroll Info", icon: LocalAtmIcon, isClicked: false },
-  ]);
+  /*-- INITS --*/
+  const [routes, setRoutes] = useState(ROUTES);
+  const router = useRouter();
+
+  /*-- FUNCTIONS --*/
   function handleNavbarClick(index: number) {
     const updatedRoutes = routes.map((route, i) =>
       i === index
         ? { ...route, isClicked: true }
         : { ...route, isClicked: false }
     );
+    router.push(getRoute(index));
+
     setRoutes(updatedRoutes);
   }
+
+  function getRoute(index: number): string {
+    return routes[index].route;
+  }
+
   return (
     <main>
       {/* BRAND LOGO */}
-      <div className="mt-40">
+      <div className="mx-auto w-max mt-5">
+        <Image
+          priority
+          src="/pcic_logo.png"
+          alt="PCIC Logo"
+          width={50}
+          height={30}
+        />
+      </div>
+      <div className="w-full text-center text-xss mt-2">
+        {VENDOR_ABBREVIATION} PMS-ESS {VERSION}
+      </div>
+      <div className="mt-10">
         <ul className="">
           {routes.map((route, index) => (
             <SideBarList

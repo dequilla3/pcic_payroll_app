@@ -15,15 +15,15 @@ export default function SideBarList({
 }: SideBarListProps) {
   return (
     <li
-      className={
+      className={`cursor-pointer md:pl-4 mb-2 p-2.5 text-xs sm:pl-9 ${
         isClicked
-          ? "cursor-pointer pl-6 mb-2 p-3 text-sm bg-green-100 sm:pl-9 font-semibold border-r-4 border-green-700 transition-all"
-          : "hover:font-semibold cursor-pointer pl-6 mb-2 p-3 text-sm hover:bg-green-100 sm:pl-9"
-      }
+          ? "bg-green-100 font-semibold border-r-2 border-green-700 transition-all"
+          : "hover:font-semibold hover:bg-green-100"
+      }`}
       onClick={onClick}
     >
       <div className="flex">
-        {Icon && <Icon className="mr-2" />}
+        {Icon && <Icon className="mr-2" fontSize="small" />}
         <div className="sm:hidden md:block">{title}</div>
       </div>
     </li>
