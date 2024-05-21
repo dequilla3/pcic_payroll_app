@@ -14,13 +14,12 @@ export default function CustomLayout({
 }) {
   return (
     <section className="flex">
-      <div className="fixed top-0 bottom-0 bg-slate-50 sm:w-24 md:w-48 shadow-xl border">
+      <div className="h-screen bg-slate-50 sm:w-24 md:w-44 shadow-xl border fixed">
+        {/* Parent div with relative positioning */}
         <Sidebar />
       </div>
-      <main className="flex flex-grow flex-col shadow-sm">
-        <div className="border p-5 fixed top-3 bottom-3 right-3 md:left-52 sm:left-28">
-          {children}
-        </div>
+      <main className="flex flex-grow flex-col md:ml-44 sm:ml-24">
+        <div className="p-5  md:left-52 sm:left-28">{children}</div>
       </main>
     </section>
   );

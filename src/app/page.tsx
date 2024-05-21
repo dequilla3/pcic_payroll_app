@@ -1,6 +1,6 @@
-
 import { Metadata } from "next";
 import LoginForm from "./components/forms/login/LoginForm";
+import { useState } from "react";
 
 export const metadata: Metadata = {
   title: "Self-Service Portal",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <LoginForm/>
+  return <LoginForm />;
 }

@@ -1,16 +1,25 @@
 "use client";
 
-import SideBarList from "../custom-components/SidebarList"; 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { VENDOR_ABBREVIATION, VERSION } from "@/app/constants/Apptext";
 import { ROUTES } from "@/app/constants/Routes";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import LoadingOverlay from "../custom-components/LoadingOverlay";
+import SideBarList from "../custom-components/SidebarList";
 
 export default function Sidebar() {
   /*-- INITS --*/
   const [routes, setRoutes] = useState(ROUTES);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    // Prefetch the routes
+    routes.forEach((route) => {
+      router.prefetch(route.route);
+    });
+  }, [router, routes]);
 
   /*-- FUNCTIONS --*/
   function handleNavbarClick(index: number) {
@@ -19,8 +28,8 @@ export default function Sidebar() {
         ? { ...route, isClicked: true }
         : { ...route, isClicked: false }
     );
-    router.push(getRoute(index));
 
+    router.push(getRoute(index));
     setRoutes(updatedRoutes);
   }
 
@@ -30,6 +39,8 @@ export default function Sidebar() {
 
   return (
     <main>
+      <LoadingOverlay loading={loading} />
+
       {/* BRAND LOGO */}
       <div className="mx-auto w-max mt-5">
         <Image

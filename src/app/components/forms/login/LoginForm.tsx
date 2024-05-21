@@ -4,11 +4,16 @@ import ButtonPrimary from "../../custom-components/ButtonPrimary";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { SYSTEN_TITLE, VERSION } from "@/app/constants/Apptext";
+import { useState } from "react";
 
 export default function LoginForm() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   function handleLogin() {
+    setLoading(true);
+    setDisabled(true);
     router.push("/pages/dashboard");
   }
 
@@ -39,7 +44,12 @@ export default function LoginForm() {
           type="password"
           placeholder="Password"
         />
-        <ButtonPrimary text="Login" onClick={handleLogin} />
+        <ButtonPrimary
+          text="Login"
+          onClick={handleLogin}
+          loading={loading}
+          disabled={disabled}
+        />
       </div>
     </div>
   );
