@@ -15,6 +15,22 @@ export default function Sidebar() {
   const router = useRouter();
 
   useEffect(() => {
+    const index = Number(localStorage.selectedModuleId ?? 0);
+    const initRouteTab = (index: number) => {
+      setRoutes(updatedRoutes(index));
+    };
+    initRouteTab(index);
+  }, []);
+
+  const updatedRoutes = (index: number) => {
+    return routes.map((route, i) =>
+      i === index
+        ? { ...route, isClicked: true }
+        : { ...route, isClicked: false }
+    );
+  };
+
+  useEffect(() => {
     // Prefetch the routes
     routes.forEach((route) => {
       router.prefetch(route.route);
@@ -22,16 +38,14 @@ export default function Sidebar() {
   }, [router, routes]);
 
   /*-- FUNCTIONS --*/
-  function handleNavbarClick(index: number) {
-    const updatedRoutes = routes.map((route, i) =>
-      i === index
-        ? { ...route, isClicked: true }
-        : { ...route, isClicked: false }
-    );
-
+  const handleNavbarClick = (index: number) => {
+    if (index == routes.length - 1) {
+      setLoading(true);
+    }
     router.push(getRoute(index));
-    setRoutes(updatedRoutes);
-  }
+    setRoutes(updatedRoutes(index));
+    localStorage.selectedModuleId = index;
+  };
 
   function getRoute(index: number): string {
     return routes[index].route;
@@ -49,6 +63,7 @@ export default function Sidebar() {
           alt="PCIC Logo"
           width={50}
           height={30}
+          className="w-full h-auto"
         />
       </div>
       <div className="w-full text-center text-xss mt-2">

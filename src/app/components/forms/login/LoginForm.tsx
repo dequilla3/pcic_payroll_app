@@ -4,12 +4,16 @@ import ButtonPrimary from "../../custom-components/ButtonPrimary";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { SYSTEN_TITLE, VERSION } from "@/app/constants/Apptext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function LoginForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    localStorage.clear();
+  });
 
   function handleLogin() {
     setLoading(true);
@@ -27,6 +31,7 @@ export default function LoginForm() {
             alt="PCIC Logo"
             width={100}
             height={50}
+            className="w-full h-auto"
           />
         </div>
         <div className="text-center mb-3 font-semibold text-sm ">

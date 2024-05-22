@@ -24,12 +24,14 @@ export default function Tabs({ initialTabs }: TabsProps) {
 
   return (
     <div>
-      <div className="flex text-xs shadow-sm p-3 mt-3">
+      <div className="flex text-xs shadow-sm  mt-3">
         {tabs.map((val, index) => (
           <div
             key={index}
-            className={`transition-all mr-3 cursor-pointer hover:bg-green-200 p-2 rounded-sm ${
-              val.isClicked ? "font-semibold bg-green-200" : ""
+            className={`mr-2 cursor-pointer hover:bg-slate-50 p-2 rounded-sm text-xs ${
+              val.isClicked
+                ? "font-semibold bg-slate-50 border-t border-green-500"
+                : ""
             }`}
             onClick={() => handleNavbarClick(index)}
           >
@@ -40,7 +42,7 @@ export default function Tabs({ initialTabs }: TabsProps) {
       {tabs.map(
         (tab, index) =>
           tab.isClicked && (
-            <div className="p-3" key={index}>
+            <div className="p-8 bg-slate-50 " key={index}>
               <tab.content />
             </div>
           )

@@ -33,7 +33,7 @@ export default function CardStatus({
 
   return (
     <div
-      className={`relative w-80 h-36 rounded-lg ${bgColorClass} hover:shadow-lg cursor-pointer`}
+      className={`w-80 h-36 rounded-lg ${bgColorClass} hover:shadow-lg cursor-pointer`}
     >
       <div className="mt-3 ml-3 mr-3">
         <div className="flex">
@@ -45,7 +45,8 @@ export default function CardStatus({
             <div className="ml-5">{title}</div>
           </div>
         </div>
-        <div className="absolute bottom-2 left-10 right-10 text-center text-xs text-neutral-400 border-t-2 border-neutral-400 pt-1">
+        <div className="text-end text-xs text-neutral-400 border-neutral-400 pt-1 mt-8">
+          hr
           {valuePercentage}
         </div>
       </div>

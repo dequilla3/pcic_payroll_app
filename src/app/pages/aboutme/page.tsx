@@ -4,7 +4,7 @@ import { PageHeaderTitle } from "@/app/components/custom-components/PageHeaderTi
 import Tabs from "@/app/components/custom-components/Tabs";
 import DailyTimeRecord from "@/app/components/forms/aboutme/DailyTimeRecord";
 import LeaveBalances from "@/app/components/forms/aboutme/LeaveBalances";
-import PersonalInfo from "@/app/components/forms/aboutme/personalinfo";
+import PersonalInfo from "@/app/components/forms/aboutme/PersonalInfo";
 
 function AboutMe() {
   const tabs = [
