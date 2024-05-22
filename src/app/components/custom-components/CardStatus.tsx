@@ -33,7 +33,7 @@ export default function CardStatus({
 
   return (
     <div
-      className={`relative w-80 h-36 rounded-lg ${bgColorClass} mr-5 mb-5 hover:shadow-lg cursor-pointer`}
+      className={`relative w-80 h-36 rounded-lg ${bgColorClass} hover:shadow-lg cursor-pointer`}
     >
       <div className="mt-3 ml-3 mr-3">
         <div className="flex">

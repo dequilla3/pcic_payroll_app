@@ -24,8 +24,8 @@ export function PageHeaderTitle({ title }: PageHeaderTitleProps) {
   return (
     <section>
       <div
-        className={`border-l-4 border-green-500 pl-2 mb-2 font-bold text-sm transition-all ${
-          isScrolled ? "fixed top-0 z-10 bg-white w-full p-2 shadow-lg" : ""
+        className={`border-l-4 border-green-500 pl-2 mb-2 p-2 font-bold text-sm transition-all ${
+          isScrolled ? "fixed top-0 z-10 bg-white w-full shadow-lg" : ""
         }`}
       >
         {title}
