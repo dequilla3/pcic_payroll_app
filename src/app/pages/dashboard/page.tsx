@@ -19,7 +19,7 @@ export default function Dashboard() {
 
   return (
     <main>
-      <LoadingOverlay loading={loading} />;
+      <LoadingOverlay loading={loading} />
       <PageHeaderTitle title="Dashboard" />
       <div className="flex flex-wrap justify-evenly gap-5 mt-5 transition-all z-0">
         {cardData.map((card, index) => (
