@@ -28,10 +28,8 @@ export default function Tabs({ initialTabs }: TabsProps) {
         {tabs.map((val, index) => (
           <div
             key={index}
-            className={`mr-2 cursor-pointer hover:bg-slate-50 p-2 rounded-sm text-xs ${
-              val.isClicked
-                ? "font-semibold bg-slate-50 border-t border-green-500"
-                : ""
+            className={`mr-2 cursor-pointer hover:bg-slate-50 p-1 rounded-sm text-xs ${
+              val.isClicked ? "font-semibold border-b border-green-500" : ""
             }`}
             onClick={() => handleNavbarClick(index)}
           >
@@ -42,7 +40,7 @@ export default function Tabs({ initialTabs }: TabsProps) {
       {tabs.map(
         (tab, index) =>
           tab.isClicked && (
-            <div className="p-8 bg-slate-50 " key={index}>
+            <div className="p-8" key={index}>
               <tab.content />
             </div>
           )

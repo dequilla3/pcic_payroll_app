@@ -15,7 +15,7 @@ export default function SideBarList({
 }: SideBarListProps) {
   return (
     <li
-      className={`cursor-pointer md:pl-4 mb-2 p-2.5 text-sm sm:pl-9 ${
+      className={`cursor-pointer  mb-2 p-2.5 sm:text-xs sm:pl-9 lg:text-sm md:pl-4  ${
         isClicked
           ? "bg-green-100 font-semibold border-r-2 border-green-700 transition-all"
           : "hover:font-semibold hover:bg-green-100"
